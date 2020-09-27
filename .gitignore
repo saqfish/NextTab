@@ -1,0 +1,6 @@
+extension/
+*.zip
+node_modules/
+*.swp
+*.swo
+mock.js
