@@ -1,7 +1,7 @@
 {
   "name": "mtb",
-  "version": "0.0.1",
-  "description": "mtb",
+  "version": "0.0.2",
+  "description": "A tool that switches to the next tab in the stack on refresh",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:chrome": "npm run chrome-launch",
@@ -94,7 +94,6 @@
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
     "react-minimal-pie-chart": "^8.0.1",
-    "react-pdf": "^5.0.0",
     "regenerator-runtime": "^0.13.5",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",

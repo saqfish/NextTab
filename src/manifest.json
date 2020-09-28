@@ -1,9 +1,9 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "name": "mtb",
   "short_name": "mtb",
-  "description": "mtb extension",
+  "description": "A tool that switches to the next tab in the stack on refresh",
   "background": {
     "scripts": [
       "lib/js/browser-polyfill.js",
@@ -16,7 +16,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "https://taskup.ai/*",
     "tabs",
     "downloads",
     "storage"
