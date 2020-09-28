@@ -26,7 +26,7 @@ export default function General() {
             <Avatar
               variant="square"
               alt="Logo"
-              src={dark ? "/img/icon.png" : "/img/icon_white.png"}
+              src={dark ? "/img/icon_white128.png" : "/img/icon128.png"}
             />
           }
           title="MultiTab"
