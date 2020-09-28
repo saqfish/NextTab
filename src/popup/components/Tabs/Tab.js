@@ -1,7 +1,6 @@
 import React from "react";
 
 import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Switch from "@material-ui/core/Switch";
 
@@ -17,19 +16,25 @@ const Tab = props => {
   const useStyles = makeStyles(style);
   const classes = useStyles();
   const handleEnabledChange = (id, enabled) => {
-    sendToBackground(messages.funcTab, { data: { id, enabled } }).then(res=>setTabs(res));
+    sendToBackground(messages.funcTab, { data: { id, enabled } }).then(res =>
+      setTabs(res)
+    );
   };
 
   return (
     <ListItem className={classes.item}>
-      <ListItemText primary={tab.title} />{" "}
-      <ListItemSecondaryAction >
-        <Switch
-          checked={tab.enabled}
-          color="primary"
-          onChange={() => handleEnabledChange(tab.id, !tab.enabled)}
-        />
-      </ListItemSecondaryAction>
+      <ListItemText
+        primary={tab.title}
+        secondary={tab.url}
+        primaryTypographyProps={{ noWrap: true }}
+        secondaryTypographyProps={{ noWrap: true }}
+        className={classes.title}
+      />
+      <Switch
+        checked={tab.enabled}
+        color="primary"
+        onChange={() => handleEnabledChange(tab.id, !tab.enabled)}
+      />
     </ListItem>
   );
 };

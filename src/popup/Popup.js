@@ -34,7 +34,7 @@ const Popup = props => {
       <CssBaseline />
       <div className={classes.root}>
         <PopupAppBar func={setTabs} />
-        <List>
+        <List className={classes.list}>
           {tabs.map(tab => {
             return <Tab tab={tab} func={setTabs} />;
           })}
