@@ -1,8 +1,8 @@
 {
   "version": "0.0.2",
   "manifest_version": 2,
-  "name": "mtb",
-  "short_name": "mtb",
+  "name": "MultiTab",
+  "short_name": "MTB",
   "description": "A tool that switches to the next tab in the stack on refresh",
   "background": {
     "scripts": [
@@ -11,7 +11,11 @@
     ]
   },
   "browser_action": {
-    "default_icon": "img/icon.png",
+    "default_icon": {
+      "128": "img/icon128.png",
+      "48": "img/icon48.png",
+      "16": "img/icon16.png"
+    },
     "default_title": "mtb",
     "default_popup": "popup.html"
   },
@@ -21,7 +25,9 @@
     "storage"
   ],
   "icons": {
-    "128": "img/icon.png"
+    "128": "img/icon128.png",
+    "48": "img/icon48.png",
+    "16": "img/icon16.png"
   },
   "options_ui": {
     "page": "./options.html",

@@ -1,5 +1,5 @@
 {
-  "name": "mtb",
+  "name": "MultiTab",
   "version": "0.0.2",
   "description": "A tool that switches to the next tab in the stack on refresh",
   "scripts": {
