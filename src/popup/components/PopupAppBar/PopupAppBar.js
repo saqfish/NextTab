@@ -14,7 +14,7 @@ import { messages } from "constants";
 
 import style from "./styles";
 
-const PopupAppBar = () => {
+const PopupAppBar = props => {
   const theme = useTheme();
   const isDark = theme.palette.type == "dark";
   const useStyles = makeStyles(() => style(isDark));
@@ -31,7 +31,7 @@ const PopupAppBar = () => {
           <Tooltip title="Reset">
             <IconButton
               className={classes.main}
-              onClick={() => sendToBackground(messages.tabs, {})}
+              onClick={() => sendToBackground(messages.tabs, {}).then(res=>props.func(res))}
               disableElevation
             >
               <RefreshIcon />

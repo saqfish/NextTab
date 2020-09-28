@@ -33,7 +33,7 @@ const dispatcher = (value, sender) => {
         });
       },
       [messages.tabs]: () => {
-        setTabs().then(() => resolve({ selTabs }));
+        setTabs().then(() => resolve(selTabs));
       },
       [messages.funcTab]: data => {
         const { id, enabled } = data.data;
