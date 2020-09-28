@@ -93,7 +93,7 @@ const dispatcher = (value, sender) => {
 };
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (changeInfo.url && selTabs[tab.index].enabled) {
+  if (changeInfo.url && selTabs[tab.index] !=undefined && selTabs[tab.index].enabled) {
     selTabs.map(t => {
       if (t.id == tabId) {
         console.log(`${t.id} changed`);
