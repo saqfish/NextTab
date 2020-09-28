@@ -6,7 +6,6 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 
 import BackupPanel from "./BackupPanel";
-import Issues from "./Issues";
 import style from "./styles";
 
 import { useTheme, makeStyles } from "@material-ui/core/styles";
@@ -30,12 +29,11 @@ export default function General() {
               src={dark ? "/img/icon.png" : "/img/icon_white.png"}
             />
           }
-          title="Skeleton"
+          title="MultiTab"
           subheader={version}
         />
       </Card>
       <List>
-        <Issues />
         <BackupPanel />
       </List>
     </div>

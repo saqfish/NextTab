@@ -3,11 +3,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 
 import GeneralMenuItem from "../General/GeneralMenuItem";
 import AppearanceMenuItem from "../Appearance/AppearanceMenuItem.js";
-import HelpMenuItem from "./HelpMenuItem.js";
 
 const drawerWidth = 200;
 const useStyles = makeStyles(theme => ({
@@ -42,8 +40,6 @@ const DrawerView = props => {
       <List>
         <GeneralMenuItem func={props.func} />
         <AppearanceMenuItem func={props.func} />
-        <Divider />
-        <HelpMenuItem />
       </List>
     );
   };

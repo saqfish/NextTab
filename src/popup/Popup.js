@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {
@@ -16,9 +16,8 @@ import override from "./overrides";
 import style from "./styles";
 
 const Popup = props => {
-  const [ tabs, setTabs] = useState(props.tabs);
+  const [tabs, setTabs] = useState(props.tabs);
   const defaultTheme = createMuiTheme();
-
 
   const theme = {
     ...props.theme,
@@ -30,15 +29,14 @@ const Popup = props => {
 
   const mainTheme = createMuiTheme(theme);
   const classes = useStyles();
-
   return (
     <ThemeProvider theme={mainTheme}>
       <CssBaseline />
       <div className={classes.root}>
-        <PopupAppBar func={setTabs}/>
+        <PopupAppBar func={setTabs} />
         <List>
           {tabs.map(tab => {
-            return <Tab tab={tab} func={setTabs}/>;
+            return <Tab tab={tab} func={setTabs} />;
           })}
         </List>
       </div>

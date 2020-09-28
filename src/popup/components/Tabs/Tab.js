@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -13,12 +13,10 @@ import style from "./styles";
 
 const Tab = props => {
   const { tab, func: setTabs } = props;
-  const [enabled, setEnabled] = useState(tab.enabled);
 
   const useStyles = makeStyles(style);
   const classes = useStyles();
   const handleEnabledChange = (id, enabled) => {
-    setEnabled(enabled);
     sendToBackground(messages.funcTab, { data: { id, enabled } }).then(res=>setTabs(res));
   };
 
@@ -27,7 +25,7 @@ const Tab = props => {
       <ListItemText primary={tab.title} />{" "}
       <ListItemSecondaryAction >
         <Switch
-          checked={enabled}
+          checked={tab.enabled}
           color="primary"
           onChange={() => handleEnabledChange(tab.id, !tab.enabled)}
         />
