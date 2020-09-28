@@ -12,15 +12,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import style from "./styles";
 
 const Tab = props => {
-  const { tab } = props;
+  const { tab, func: setTabs } = props;
   const [enabled, setEnabled] = useState(tab.enabled);
-  console.log(classes);
 
   const useStyles = makeStyles(style);
   const classes = useStyles();
   const handleEnabledChange = (id, enabled) => {
     setEnabled(enabled);
-    sendToBackground(messages.funcTab, { data: { id, enabled } });
+    sendToBackground(messages.funcTab, { data: { id, enabled } }).then(res=>setTabs(res));
   };
 
   return (

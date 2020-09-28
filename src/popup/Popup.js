@@ -38,7 +38,7 @@ const Popup = props => {
         <PopupAppBar func={setTabs}/>
         <List>
           {tabs.map(tab => {
-            return <Tab tab={tab} />;
+            return <Tab tab={tab} func={setTabs}/>;
           })}
         </List>
       </div>

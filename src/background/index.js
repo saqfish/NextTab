@@ -44,8 +44,7 @@ const dispatcher = (value, sender) => {
             else selected--;
           }
         });
-        resolve({ tabs: selTabs });
-        console.log(selTabs);
+        resolve(selTabs);
       },
       [messages.setSettingsValues]: data => {
         setSettingsValues(data);
