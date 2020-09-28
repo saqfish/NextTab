@@ -105,13 +105,35 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   }
 });
 
-const selNextTab = (id, indx) => {
-  if (indx + 1 > selected) selNextTab(id, 0);
-  for (let i = indx + 1; i < selTabs.length; i++) {
+const getSelected = () => {
+  return new Promise(resolve => {
+    let count = 0;
+    chrome.tabs.getAllInWindow(null, function(tabs) {
+      selTabs.map((t1, i) => {
+        let exists = tabs.some(t2 => {
+          let test = t1.id == t2.id;
+          return test;
+        });
+        if (exists && t1.enabled) count++;
+        else if (!exists) selTabs.splice(i, 1);
+      });
+      resolve(count);
+    });
+  });
+};
+
+const selNextTab = async (id, indx) => {
+  if (indx >= selected) selNextTab(id, 0);
+  for (let i = indx; i < selTabs.length; i++) {
     const t = selTabs[i];
     if (t.id != id && t.enabled == true) {
       let updateProperties = { active: true };
-      chrome.tabs.update(t.id, updateProperties, () => {});
+      chrome.tabs.update(t.id, updateProperties, async () => {
+        if (chrome.runtime.lastError) {
+          selected = await getSelected();
+          selNextTab(t.id, i);
+        }
+      });
       break;
     }
   }
