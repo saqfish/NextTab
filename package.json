@@ -1,7 +1,7 @@
 {
-  "name": "MultiTab",
-  "version": "0.0.2",
-  "description": "A tool that switches to the next tab in the stack on refresh",
+  "name": "NextTab",
+  "version": "0.0.3",
+  "description": "A tool that automatically switches to the next tab in a list",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:chrome": "npm run chrome-launch",
@@ -25,12 +25,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/saqfish/mtb.git"
+    "url": "https://github.com/saqfish/ntb.git"
   },
   "author": "saqfish <saqfish@gmail.com>",
-  "license": "GPLv2",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saqfish/mtb/issues"
+    "url": "https://github.com/saqfish/ntb/issues"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",

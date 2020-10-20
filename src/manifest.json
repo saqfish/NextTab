@@ -1,9 +1,9 @@
 {
   "version": "0.0.2",
   "manifest_version": 2,
-  "name": "MultiTab",
-  "short_name": "MTB",
-  "description": "A tool that switches to the next tab in the stack on refresh",
+  "name": "NextTab",
+  "short_name": "NTB",
+  "description": "A tool that automatically switches to the next tab in a list",
   "background": {
     "scripts": [
       "lib/js/browser-polyfill.js",
@@ -16,7 +16,7 @@
       "48": "img/icon48.png",
       "16": "img/icon16.png"
     },
-    "default_title": "mtb",
+    "default_title": "ntb",
     "default_popup": "popup.html"
   },
   "permissions": [
