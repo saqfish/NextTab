@@ -3,6 +3,7 @@
 import Settings from "./settings";
 
 import { open } from "miscUtils";
+import { setTabs } from "./util";
 import { messages } from "./constants";
 
 const {
@@ -13,13 +14,12 @@ const {
 } = Settings();
 
 let selTabs = [];
-let selected = 0;
+let index = 0;
 
 const dispatcher = value => {
   return new Promise(resolve => {
     const dispatch = {
       [messages.initPopup]: () => {
-        console.log(selTabs);
         resolve({
           theme: settingsValues().theme,
           data: settingsValues(),
@@ -33,15 +33,16 @@ const dispatcher = value => {
         });
       },
       [messages.tabs]: () => {
-        setTabs().then(res => resolve(res));
+        setTabs().then(res => {
+          selTabs = res;
+          resolve(selTabs);
+        });
       },
       [messages.funcTab]: data => {
         const { id, enabled } = data.data;
         selTabs.map(tab => {
           if (tab.id == id) {
             tab.enabled = enabled;
-            if (enabled) selected++;
-            else selected--;
           }
         });
         resolve(selTabs);
@@ -72,7 +73,7 @@ const dispatcher = value => {
           }
         } else {
           var tempData = {
-            check: 34032423,
+            check: 3299324123,
             settings: settingsValues()
           };
 
@@ -91,70 +92,36 @@ const dispatcher = value => {
   });
 };
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (
-    changeInfo.url &&
-    selTabs[tab.index] != undefined &&
-    selTabs[tab.index].enabled
-  ) {
-    selTabs.map(t => {
-      if (t.id == tabId) {
-        selNextTab(tabId, tab.index);
-      }
+const selNextTab = () => {
+  if (index == selTabs.length) index = 0;
+  else index++;
+  let tab = selTabs[index];
+  if (tab != undefined && tab.enabled == true) {
+    let updateProperties = { active: true };
+    chrome.tabs.update(tab.id, updateProperties, async () => {
+      if (chrome.runtime.lastError) selNextTab(tab);
     });
-  }
-});
-
-const getSelected = () => {
-  return new Promise(resolve => {
-    let count = 0;
-    chrome.tabs.getAllInWindow(null, function(tabs) {
-      selTabs.map((t1, i) => {
-        let exists = tabs.some(t2 => {
-          let test = t1.id == t2.id;
-          return test;
-        });
-        if (exists && t1.enabled) count++;
-        else if (!exists) selTabs.splice(i, 1);
-      });
-      resolve(count);
-    });
-  });
-};
-
-const selNextTab = async (id, indx) => {
-  if (indx >= selected) selNextTab(id, 0);
-  for (let i = indx; i < selTabs.length; i++) {
-    const t = selTabs[i];
-    if (t.id != id && t.enabled == true) {
-      let updateProperties = { active: true };
-      chrome.tabs.update(t.id, updateProperties, async () => {
-        if (chrome.runtime.lastError) {
-          selected = await getSelected();
-          selNextTab(t.id, i);
-        }
-      });
-      break;
-    }
-  }
-};
-
-const setTabs = () => {
-  return new Promise(resolve => {
-    chrome.tabs.getAllInWindow(null, function(tabs) {
-      selected = 0;
-      selTabs = tabs.map(x => x);
-      selTabs.map(tab => {
-        tab.enabled = false;
-      });
-      resolve(selTabs);
-    });
-  });
+  } else selNextTab(tab);
 };
 
 async function background() {
   await loadSettings();
-  await setTabs();
+
+  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    if (
+      changeInfo.url &&
+      selTabs[tab.index] != undefined &&
+      selTabs[tab.index].enabled
+    ) {
+      selTabs.map((t, i) => {
+        if (t.id == tabId) {
+          index = i;
+          selNextTab();
+        }
+      });
+    }
+  });
+
   browser.runtime.onMessage.addListener(
     (message, sender) =>
       new Promise(async (resolve, reject) => {
