@@ -29,7 +29,7 @@ export default function General() {
               src={dark ? "/img/icon_white128.png" : "/img/icon128.png"}
             />
           }
-          title="MultiTab"
+          title="NextTab"
           subheader={version}
         />
       </Card>

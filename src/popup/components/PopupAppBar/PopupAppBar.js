@@ -26,7 +26,7 @@ const PopupAppBar = props => {
       <AppBar elevation={0} position="static">
         <Toolbar className={classes.toolbar} variant="dense">
           <Typography variant="h6" className={classes.title}>
-            MultiTab
+            NextTab
           </Typography>
           <Tooltip title="Reset">
             <IconButton
