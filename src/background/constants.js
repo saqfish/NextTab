@@ -10,7 +10,7 @@ const messages = {
 };
 
 const keys = {
-  settings: "mtb_settings"
+  settings: "ntb_settings"
 };
 
 const defaults = {
