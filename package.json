@@ -25,12 +25,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/saqfish/ntb.git"
+    "url": "https://github.com/saqfish/NextTab.git"
   },
   "author": "saqfish <saqfish@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saqfish/ntb/issues"
+    "url": "https://github.com/saqfish/NextTab/issues"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",

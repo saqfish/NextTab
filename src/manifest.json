@@ -2,7 +2,7 @@
   "version": "0.0.2",
   "manifest_version": 2,
   "name": "NextTab",
-  "short_name": "NTB",
+  "short_name": "NextTab",
   "description": "A tool that automatically switches to the next tab in a list",
   "background": {
     "scripts": [
@@ -16,7 +16,7 @@
       "48": "img/icon48.png",
       "16": "img/icon16.png"
     },
-    "default_title": "ntb",
+    "default_title": "NextTab",
     "default_popup": "popup.html"
   },
   "permissions": [
