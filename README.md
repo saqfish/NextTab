@@ -1,4 +1,4 @@
-[![badge](https://raw.githubusercontent.com/saqfish/NextTab/master/chrome_store/ChromeWebStore_Badge_v2_206x58.png)](https://chrome.google.com/webstore/detail/NextTab/fnalnialanddhanakabnfbngija)
+[![badge](https://raw.githubusercontent.com/saqfish/NextTab/master/chrome_store/ChromeWebStore_Badge_v2_206x58.png)](https://chrome.google.com/webstore/detail/nexttab/fnalnialandajhfaidhanakabnfbngij)
 
 This repository is the latest verson of the extension. The chrome store might be a version behind due to google's review process taking too long.
 
